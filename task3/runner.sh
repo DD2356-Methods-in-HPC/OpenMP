@@ -14,7 +14,7 @@ if [ "$#" -gt 2 ]; then
     threads="$3"
 fi
 
-runs=10
+runs=100
 #Run program "runs" times and save output in $output using array notation
 
 #Empty file and add opening bracket
