@@ -23,10 +23,10 @@ echo [ > "$output"
 # Loop 100 times
 for ((i = 0; i < runs-1; i++)); do
     # Run your program and redirect the output to a file
-    ./"$executable" "$threads" | awk '{print $0","}' >> "$output"
+    srun "$executable" "$threads" | awk '{print $0","}' >> "$output"
 done
 #run last iteration specially to not include ending comma
-./"$executable" "$threads" >> "$output"
+srun "$executable" "$threads" >> "$output"
 
 #add ending bracket
 echo ] >> "$output"
