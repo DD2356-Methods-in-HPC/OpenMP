@@ -19,14 +19,16 @@ double omp_sum(double *x, size_t size){
     for (size_t i = 0; i < size; i++) {
       sum_val += x[i];
     }
-
-  //printf("%f \n", sum_val);
   return sum_val;
 }
 
 
 #define ARR_SIZE 10000000
-int main(){
+int main(int argc, char *argv[]){
+  if(argc == 2){
+    int num_threads = atoi(argv[1]);
+    omp_set_num_threads(num_threads);
+  }
   //Setup
   srand(time(NULL) * getpid()); //Set seed
   double* arr = malloc(ARR_SIZE * sizeof(double));
