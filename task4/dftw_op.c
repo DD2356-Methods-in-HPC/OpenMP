@@ -31,6 +31,8 @@ int checkResults(double *xr, double *xi, double *xr_check, double *xi_check,
 int printResults(double *xr, double *xi, int N);
 
 int main(int argc, char *argv[]) {
+  // printing number of threads to check thread count
+  printf("Number of threads: %d\n", omp_get_num_threads());
   // used for setting threads, by default we use maximum amount of threads
   // file name is argument, so we check > 1
   if (argc > 1) {
@@ -110,6 +112,7 @@ int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
 
   // normalize if you are doing IDFT
   if (idft == -1) {
+    #pragma omp parallel for
     for (int n = 0; n < N; n++) {
       Xr_o[n] /= N;
       Xi_o[n] /= N;
