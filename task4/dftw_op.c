@@ -31,8 +31,6 @@ int checkResults(double *xr, double *xi, double *xr_check, double *xi_check,
 int printResults(double *xr, double *xi, int N);
 
 int main(int argc, char *argv[]) {
-  // printing number of threads to check thread count
-  printf("Number of threads: %d\n", omp_get_num_threads());
   // used for setting threads, by default we use maximum amount of threads
   // file name is argument, so we check > 1
   if (argc > 1) {
@@ -41,6 +39,9 @@ int main(int argc, char *argv[]) {
     // set thread count
     omp_set_num_threads(threads);
   }
+
+  // printing number of threads to check thread count
+  printf("Number of threads: %d\n", omp_get_num_threads());
 
   // size of input array
   int N = 10000; // 8,000 is a good number for testing
