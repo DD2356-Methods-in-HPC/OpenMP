@@ -1,5 +1,5 @@
 #include "omp.h"
- #include <stdio.h>
+#include <stdio.h>
 int main(){
   #pragma omp parallel
 	{
